@@ -83,7 +83,7 @@ body {
     position: relative;
 
     @media screen and(max-width: 450px) {
-      margin-top: 15rem;
+      margin-top: 18rem;
     }
   }
   &_contact {
@@ -410,6 +410,24 @@ body {
   &_icons {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+
+
+    &_left{
+      display: flex;
+      flex-direction: column;
+
+      @media screen and(max-width: 600px) {
+        align-items: center;
+      }
+    }
+    &_right{
+      display: flex;
+      flex-direction: column;
+      @media screen and(max-width: 600px) {
+        align-items: center;
+      }
+    }
   }
 }
 .container_projects {
