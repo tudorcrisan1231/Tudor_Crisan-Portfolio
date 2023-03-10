@@ -206,6 +206,10 @@ export default {
   components: {},
 
   data() {
+
+    // API BASED: lolStatsVue  - Vito Food - Mapty
+    // only layout: Natours - Trillo - Nexter - Bankist
+    // full stack: scLupsa, hauze, managemnetApp,  
     const projects = [
         {
           id: '1',
