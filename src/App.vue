@@ -156,7 +156,7 @@
           <p v-for="j in i.code" :key="j">#{{j}}</p>
         </div>
       </div>  
-      <button class="main-text_btn mini_projects_btn" @click="showMore()" ref="view_projects" data-aos="fade-up">Show more</button>    
+      <button v-if="mini_projects2.length != 0" class="main-text_btn mini_projects_btn" @click="showMore()" ref="view_projects" data-aos="fade-up">Show more</button>    
     </div>
     
 
@@ -209,37 +209,46 @@ export default {
 
     // API BASED: lolStatsVue  - Vito Food - Mapty
     // only layout: Natours - Trillo - Nexter - Bankist
-    // full stack: scLupsa, hauze, managemnetApp,  
+    // full stack:  managemnetApp,  
     const projects = [
         {
           id: '1',
           name: 'LOLStatsV2',
           description: "A stats traker for 'League of legends'. View your match history, rank, level, champions mastery / chest earned, quick overview about your recent matches, live game statistics, advanced data for every game, builds, runes, MVP. Latest LOL news, patch notes, free to play champion rotation and a lot more. Live view unavailable until I receive an authorized API_KEY.",
-          code: ['HTML', 'SCSS', 'JS','NODE.JS', 'Riot_API','DDragon'],
+          code: ['HTML', 'SCSS', 'VUE.JS','NODE.JS'],
           image: require('./assets/lol.png'),
           link: ['https://github.com/tudorcrisan1231/LOLStatsV2','https://www.youtube.com/watch?v=UbXbkygYTt8']
         },
+
         {
           id: '2',
+          name: 'Scoala Lupsa',
+          description: 'A web app for school news allows users to view the latest news and documents. As an admin, you can add, edit, or delete news and documents.',
+          code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
+          image: require('./assets/sc_lupsa.png'),
+          link: ['','https://sclupsa.ro/']
+        },
+        {
+          id: '3',
+          name: 'Hauze',
+          description: 'Hauze.ro is a website that helps people connect with a team of specialists in architecture, design and installations, and stay informed about real estate news and trends.',
+          code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
+          image: require('./assets/hauze.png'),
+          link: ['','https://hauze.ro/']
+        },
+        {
+          id: '4',
           name: 'Vito Food',
           description: 'A web app where you can search for a vast variety of food. View ingredients, cooking time, select how many servings do you want. Add your own recipe or bookmark an existing one.',
-          code: ['HTML', 'SCSS', 'JS', 'Forkify_API', 'Parcel'],
+          code: ['HTML', 'SCSS', 'JS'],
           image: require('./assets/food.png'), //trebuie pus require cand pun ceva link din assets
           link: ['https://github.com/tudorcrisan1231/vito-food','https://vito-food.netlify.app/']
         },
         {
-          id: '3',
-          name: 'Chaty',
-          description: 'A real-time, all in one chat app where you can communicate with people all over the world.',
-          code: ['HTML', 'SCSS', 'VUE.JS', 'FireBase'],
-          image: require('./assets/chatt.png'),
-          link: ['https://github.com/tudorcrisan1231/chaty-tudor','https://chaty-tudor.netlify.app/']
-        },
-        {
-          id: '4',
+          id: '5',
           name: 'Mapty',
           description: 'A web app where you can plan your travels / activities, assing them on the map with other customizations',
-          code: ['HTML', 'SCSS', 'JS', 'Leaflet_Library'],
+          code: ['HTML', 'SCSS', 'JS'],
           image: require('./assets/mapty.png'),
           link: ['https://github.com/tudorcrisan1231/Projects/tree/main/map%20app','https://mapty-map-app.netlify.app/']
         }
@@ -261,55 +270,28 @@ export default {
       },
       {
         id: '3',
-        name: 'Password generator',
-        description: "A web app that generate strong passwords, you can select the length of the password or generate a new random one.",
-        code: ['HTML', 'CSS', 'JS'],
-        link: ['https://github.com/tudorcrisan1231/Projects/tree/main/password%20generator','https://password-generator-tudor.netlify.app']
-      },
-      {
-        id: '4',
         name: 'Bankist',
         description: "A landing page for a fictional bank.",
         code: ['HTML', 'SCSS'],
         link: ['https://github.com/tudorcrisan1231/bankist','https://bankist-tudor.netlify.app']
       },
       {
-        id: '5',
+        id: '4',
         name: 'Natours',
         description: "A landing page for a fictional company that organizes nature travels.",
         code: ['HTML', 'SCSS'],
         link: ['https://github.com/tudorcrisan1231/natours-tudor','https://natours-tudor.netlify.app']
       },
       {
-        id: '6',
-        name: 'Weather App',
-        description: "Search for any city in the world and find the live weather or for the next 3 days. (Live view is not available because the data provider doesn't exist anymore)",
-        code: ['HTML', 'CSS', 'JS'],
-        link: ['https://github.com/tudorcrisan1231/weather-app-tudor','#']
-      },
-    ]
-    const mini_projects2 = [
-      {
-        id: '7',
+        id: '5',
         name: 'Trillo',
         description: "A landing page for a fictional booking company.",
         code: ['HTML', 'SCSS'],
         link: ['https://github.com/tudorcrisan1231/trillo-tudor','https://trillo-tudor.netlify.app']
       },
-      {
-        id: '8',
-        name: 'Ping Game',
-        description: "A simple dice game that you can play with a friend, first who scores 100 points win if a dice falls on 1 your unsaved score is reset.",
-        code: ['HTML', 'CSS', 'JS'],
-        link: ['https://github.com/tudorcrisan1231/Projects/tree/main/joc%20ping','https://ping-game-tudor.netlify.app']
-      },
-      {
-        id: '9',
-        name: 'Music App',
-        description: "A tap music app where you can play creating your own music.",
-        code: ['HTML', 'SCSS'],
-        link: ['https://github.com/tudorcrisan1231/Projects/tree/main/music%20app','https://music-app-tudor.netlify.app/']
-      },
+    ]
+    const mini_projects2 = [
+
     ]
     return {
       projects,
