@@ -30,7 +30,7 @@
         <h2 class="main-text_title">Hello,</h2>
         <h1 class="main-text_title">I'm Tudor,</h1>
         <h1 class="main-text_title">Web Developer!</h1>
-        <h3 style="margin-bottom: 1rem;">Front-end developer / Freelacencer</h3>
+        <h3 style="margin-bottom: 1rem;">Full Stack developer / Freelacencer</h3>
         
         <button class="main-text_btn" @click="goTo('projects')">View projects</button>
         <div class="main-text_social">
@@ -86,7 +86,7 @@
         <p data-aos="fade-up">Strongly motivated web developer with a passion for the computer world in general. Open to learn new things anytime, problem solver, a well-organized person with high attention to detail, knowing how to divide his time efficiently. Fan of video games, outdoor activities, and books reading.</p>
        
         <h3 style="color:#020826" data-aos="fade-up">Skills and Experience</h3>
-        <p data-aos="fade-up">The main area I work in is front end development(client-side of the web).</p>
+        <p data-aos="fade-up">The main area I work in is front-end development (client-side of the web), but I also work on back-end development (server-side of the web).</p>
         <p data-aos="fade-up">Technologies that I worked with: </p>
         <div class="aboutMe_icons" data-aos="fade-up">
           <div class="aboutMe_icons_left">
@@ -213,6 +213,22 @@ export default {
     const projects = [
         {
           id: '1',
+          name: 'ITEC Project',
+          description: "This web app which took second place in the ITEC 16th edition competition, streamlines new employee onboarding. Managers have full access to employee profiles, allowing them to create accounts and update onboarding plans. Old Employees are matched with new hires based on skills and experience, creating a seamless onboarding experience. Additional features like email and in-app notifications, chat systems, and translations make the process even smoother.",
+          code: ['Laravel', 'Livewire', 'MySQL', 'Tailwind CSS', 'JS'],
+          image: require('./assets/itec1.png'),
+          link: ['https://github.com/tudorcrisan1231/itec_project','https://itec.tudor-crisan.com']
+        },
+        {
+          id: '2',
+          name: 'Playground ERP',
+          description: "The web application is designed for playground administrators, who can monitor the time spent by customers in the park and calculate the price based on that time. The administrator can set a custom price, and view statistics about their customers. Customers, in this case, are parents with children.",
+          code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
+          image: require('./assets/playground.png'),
+          link: ['','https://playground.tudor-crisan.com']
+        },
+        {
+          id: '3',
           name: 'LOLStatsV2',
           description: "A stats traker for 'League of legends'. View your match history, rank, level, champions mastery / chest earned, quick overview about your recent matches, live game statistics, advanced data for every game, builds, runes, MVP. Latest LOL news, patch notes, free to play champion rotation and a lot more. Live view unavailable until I receive an authorized API_KEY.",
           code: ['HTML', 'SCSS', 'VUE.JS','NODE.JS'],
@@ -221,7 +237,7 @@ export default {
         },
 
         {
-          id: '2',
+          id: '4',
           name: 'Scoala Lupsa',
           description: 'A web app for school news allows users to view the latest news and documents. As an admin, you can add, edit, or delete news and documents.',
           code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
@@ -229,7 +245,7 @@ export default {
           link: ['','https://sclupsa.ro/']
         },
         {
-          id: '3',
+          id: '5',
           name: 'Hauze',
           description: 'Hauze.ro is a website that helps people connect with a team of specialists in architecture, design and installations, and stay informed about real estate news and trends.',
           code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
@@ -237,7 +253,7 @@ export default {
           link: ['','https://hauze.ro/']
         },
         {
-          id: '4',
+          id: '6',
           name: 'Vito Food',
           description: 'A web app where you can search for a vast variety of food. View ingredients, cooking time, select how many servings do you want. Add your own recipe or bookmark an existing one.',
           code: ['HTML', 'SCSS', 'JS'],
@@ -245,7 +261,7 @@ export default {
           link: ['https://github.com/tudorcrisan1231/vito-food','https://vito-food.netlify.app/']
         },
         {
-          id: '5',
+          id: '7',
           name: 'Mapty',
           description: 'A web app where you can plan your travels / activities, assing them on the map with other customizations',
           code: ['HTML', 'SCSS', 'JS'],
