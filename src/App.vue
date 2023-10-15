@@ -129,8 +129,8 @@
           <p v-for="j in i.code" :key="j" style="margin-right:1.5rem; text-align: right;">{{j}}</p>
         </div>
         <div :class="[i.id%2!=0 ? 'projects_icons_right': 'projects_icons_left', 'projects_icons']">
-          <a :href='i.link[0]' target="_blank" style="text-decoration:none; color:inherit;" title="GitHub repository"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g stroke-width="1.5" fill="none"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.38 13.38 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20.027c-3 .973-5.5 0-7-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></g></svg></a>
-          <a :href='i.link[1]' target="_blank" style="text-decoration:none;color:inherit;" title="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M17.001 20h-11a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4v2h-4v11h11v-4h2v4a2 2 0 0 1-2 2zm-5.3-6.293l-1.41-1.414L16.584 6h-3.583V4h7v7h-2V7.415l-6.3 6.292z" fill="currentColor"/></g></svg></a>
+          <a v-if="i.link[0]" :href='i.link[0]' target="_blank" style="text-decoration:none; color:inherit;" title="GitHub repository"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g stroke-width="1.5" fill="none"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.38 13.38 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20.027c-3 .973-5.5 0-7-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></g></svg></a>
+          <a v-if="i.link[1]" :href='i.link[1]' target="_blank" style="text-decoration:none;color:inherit;" title="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M17.001 20h-11a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4v2h-4v11h11v-4h2v4a2 2 0 0 1-2 2zm-5.3-6.293l-1.41-1.414L16.584 6h-3.583V4h7v7h-2V7.415l-6.3 6.292z" fill="currentColor"/></g></svg></a>
         </div>
       </div>
       <a :href='i.link[1]' target="_blank"  :class="[i.id%2==0 ? 'projects_imgContainer_right': 'projects_imgContainer_left', 'projects_imgContainer']">
@@ -213,14 +213,30 @@ export default {
     const projects = [
         {
           id: '1',
+          name: 'Project Finder',
+          description: "Project Finder is a web application that allows beginner developers and not only to find projects based on the technologies they want to learn. Users can create an account, add their preferred technologies, and search for projects based on those choices. They can also create projects. After creating a project, they have multiple functionalities that they can use, such as chat, task management, user management, and more. Also, I have created a dashboard for the administrator.",
+          code: ['Laravel', 'Livewire', 'MySQL', 'Tailwind CSS', 'JS'],
+          image: require('./assets/project-finder-banner.webp'),
+          link: ['','https://prj-finder.tcn-dev.software/']
+        },
+        {
+          id: '2',
+          name: 'Chat app',
+          description: "This web application is a real-time chat app. Users can create an account, add friends, and chat with them. They can also can create groups and chat with multiple people at the same time. The app also has a report system and a dashboard for the administrator where he can manage users and reports.",
+          code: ['Laravel', 'Livewire', 'MySQL', 'Tailwind CSS', 'JS', 'Docker'],
+          image: require('./assets/chatapp-banner.webp'),
+          link: ['https://github.com/tudorcrisan1231/realTimeChatApp-MAP-project','https://chatapp.tcn-dev.software/login']
+        },
+        {
+          id: '3',
           name: 'ITEC Project',
-          description: "This web app which took second place in the ITEC 16th edition competition, streamlines new employee onboarding. Managers have full access to employee profiles, allowing them to create accounts and update onboarding plans. Old Employees are matched with new hires based on skills and experience, creating a seamless onboarding experience. Additional features like email and in-app notifications, chat systems, and translations make the process even smoother.",
+          description: "This web app which took second place in the ITEC 16th edition competition, streamlines new employee onboarding. Managers have full access to employee profiles, allowing them to create accounts and update onboarding plans. Old Employees are matched with new hires based on skills and experience, creating a seamless onboarding experience. Additional features like email and in-app notifications, chat systems, and translations make the process even smoother. Demo accounts: johndoe@gmail.com / 12345 and maria@maria.ro / 12345",
           code: ['Laravel', 'Livewire', 'MySQL', 'Tailwind CSS', 'JS'],
           image: require('./assets/itec1.png'),
           link: ['https://github.com/tudorcrisan1231/itec_project','https://itec.tudor-crisan.com']
         },
         {
-          id: '2',
+          id: '4',
           name: 'Playground ERP',
           description: "The web application is designed for playground administrators, who can monitor the time spent by customers in the park and calculate the price based on that time. The administrator can set a custom price, and view statistics about their customers. Customers, in this case, are parents with children.",
           code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
@@ -228,7 +244,7 @@ export default {
           link: ['','https://playground.tudor-crisan.com']
         },
         {
-          id: '3',
+          id: '5',
           name: 'LOLStatsV2',
           description: "A stats traker for 'League of legends'. View your match history, rank, level, champions mastery / chest earned, quick overview about your recent matches, live game statistics, advanced data for every game, builds, runes, MVP. Latest LOL news, patch notes, free to play champion rotation and a lot more. Live view unavailable until I receive an authorized API_KEY.",
           code: ['HTML', 'SCSS', 'VUE.JS','NODE.JS'],
@@ -237,7 +253,7 @@ export default {
         },
 
         {
-          id: '4',
+          id: '6',
           name: 'Scoala Lupsa',
           description: 'A web app for school news allows users to view the latest news and documents. As an admin, you can add, edit, or delete news and documents.',
           code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
@@ -245,7 +261,7 @@ export default {
           link: ['','https://sclupsa.ro/']
         },
         {
-          id: '5',
+          id: '7',
           name: 'Hauze',
           description: 'Hauze.ro is a website that helps people connect with a team of specialists in architecture, design and installations, and stay informed about real estate news and trends.',
           code: ['Laravel', 'Livewire', 'MySQL', 'CSS', 'JS'],
@@ -253,7 +269,7 @@ export default {
           link: ['','https://hauze.ro/']
         },
         {
-          id: '6',
+          id: '8',
           name: 'Vito Food',
           description: 'A web app where you can search for a vast variety of food. View ingredients, cooking time, select how many servings do you want. Add your own recipe or bookmark an existing one.',
           code: ['HTML', 'SCSS', 'JS'],
@@ -261,7 +277,7 @@ export default {
           link: ['https://github.com/tudorcrisan1231/vito-food','https://vito-food.netlify.app/']
         },
         {
-          id: '7',
+          id: '9',
           name: 'Mapty',
           description: 'A web app where you can plan your travels / activities, assing them on the map with other customizations',
           code: ['HTML', 'SCSS', 'JS'],
