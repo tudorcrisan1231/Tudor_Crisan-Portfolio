@@ -2,21 +2,21 @@
 <div class="container">
   <div class="container_mobile">
       <div class="container_nav_mobile">
-        <div class="nav_list_about" @click="goTo('about') + mobileNavItemsClose()"><div></div><div>ABOUT</div></div>
-        <div class="nav_list_projects" @click="goTo('projects') + mobileNavItemsClose()"><div></div><div>PROJECTS</div></div>
-        <div class="nav_list_contact" @click="goTo('contact') + mobileNavItemsClose()"><div></div><div>CONTACT</div></div>
+        <a href="#about" class="nav_list_about" @click="mobileNavItemsClose()"><div></div><div>ABOUT</div></a>
+        <a href="#projects" class="nav_list_projects" @click="mobileNavItemsClose()"><div></div><div>PROJECTS</div></a>
+        <a href="#contact" class="nav_list_contact" @click="mobileNavItemsClose()"><div></div><div>CONTACT</div></a>
       </div>
   </div>
-  <div class="container_first" ref="home">
+  <div class="container_first" id="home">
     <nav class="nav">
-      <div class="nav_logo" @click="goTo('home') + mobileNavItemsClose()">
+      <a href="#home" class="nav_logo" @click="mobileNavItemsClose()">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"  width="4em"  height="4em" preserveAspectRatio="xMidYMid meet"  viewBox="0 0 24 24"><path d="M9 7h6v2h-2v8h-2V9H9V7M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5H5z" fill="#020826"/></svg>
-      </div>
+      </a>
       <div class="nav_list">
-        <div class="nav_list_home" @click="goTo('home')">HOME</div>
-        <div class="nav_list_about" @click="goTo('about')">ABOUT</div>
-        <div class="nav_list_projects" @click="goTo('projects')">PROJECTS</div>
-        <div class="nav_list_contact" @click="goTo('contact')">CONTACT</div>
+        <a href="#home" class="nav_list_home">HOME</a>
+        <a href="#about" class="nav_list_about">ABOUT</a>
+        <a href="#projects" class="nav_list_projects">PROJECTS</a>
+        <a href="#contact" class="nav_list_contact">CONTACT</a>
       </div>
       <div class="nav_list_mobile">
         <div class="nav_list_mobile_items" @click="mobileNav()">
@@ -71,7 +71,7 @@
       autoplay
     ></lottie-player>
   </div>
-  <div class="container_about" ref="about">
+  <div class="container_about" id="about">
     <lottie-player
       class="background_lottie_up invert"
       src="https://assets10.lottiefiles.com/packages/lf20_az79wvq6.json"
@@ -119,9 +119,9 @@
     </div>
 
   </div>
-  <div class="container_projects" ref="projects">
+  <div class="container_projects" id="projects">
     <h1 class="main-text_title projects_title" data-aos="fade-down">Some Things I’ve Built</h1>
-    <div v-for="i in this.projects" :key="i.id" class='projects' :data-aos="i.id%2!=0 ? 'fade-up-right' : 'fade-up-left'" data-aos-duration="700">
+    <div v-for="i in this.projects" :key="i.id" class='projects' :data-aos="i.id%2!=0 ? 'fade-up-right' : 'fade-up-left'" data-aos-duration="200">
       <div :class="[i.id%2!=0 ? 'projects_text_right': 'projects_text_left', 'projects_text']" >
         <h3 :class="[i.id%2!=0 ? 'projects_name_right': 'projects_name_left', 'projects_name']">{{i.name}}</h3>
         <p class="projects_description">{{i.description}}</p>
@@ -139,7 +139,7 @@
       </a>
     </div>
 
-    <h3 class="main-text_title projects_title" style="font-size:2.5rem; padding:6rem 0 3rem 0;" data-aos="fade-up">Other Noteworthy Projects</h3>
+    <h3 class="main-text_title projects_title" style="font-size:2.5rem; padding:6rem 0 0 0;" data-aos="fade-up">Other Noteworthy Projects</h3>
     <div class="mini_projects_container">
       <div class="mini_projects"  v-for="i in this.mini_projects" :key="i.id" data-aos="fade-down" data-aos-duration="1000">
         <div class="mini_projects_icons">
@@ -161,19 +161,31 @@
     
 
   </div>
-  <div class="container_contact" ref="contact">
-    <h1 class="main-text_title" style="text-align:center;" data-aos="fade-up">Let's work together!</h1>
-    <form action="https://formsubmit.co/crisantudor79@yahoo.com" method="POST" class="contact">
-      <h3 class="contact_title" data-aos="fade-up">Contact me</h3>
-      <input type="text" placeholder="Enter Name" required class="contact_name" name="name" data-aos="fade-up">
-      <input type="email" placeholder="Enter a VALID Email" required class="contact_email" name="email" data-aos="fade-up">
-      <textarea cols="30" rows="10" class="contact_text" required placeholder="Type Message" name="message" data-aos="fade-up"></textarea>
+  <div class="container_contact" id="contact">
+    <h1 class="main-text_title container_contact_title" style="text-align:center;" data-aos="fade-up">Let's work together!</h1>
+    <form @submit.prevent="submitForm" class="contact">
+      <h3 class="contact_title">Contact me</h3>
+      <input type="text" placeholder="Enter Name" required class="contact_name" name="name" v-model="formData.name">
+      <input type="email" placeholder="Enter your Email" required class="contact_email" name="email" v-model="formData.email">
+      <textarea cols="30" rows="10" class="contact_text" required placeholder="Type Message" name="message" v-model="formData.message"></textarea>
       <input type="hidden" name="_autoresponse" value="Thank you for contacting me, I'll come with a message as fast as I can!✌️">
+
+      <div v-if="responseMessage.type && responseMessage.message">
+        <div v-if="responseMessage.type=='success'">
+          <p class="message message_success">{{responseMessage.message}}</p>
+        </div>
+        <div v-else>
+          <p class="message message_error">
+            Something went wrong, please try again!
+          </p>
+        </div>
+      </div>
+
       <div class="contact_send">
-        <button type="submit" class="main-text_btn" data-aos="fade-up">Send message</button>
+        <button type="submit" class="main-text_btn">Send message</button>
       </div>
       <h3 class="contact_title">or</h3>
-      <div class="main-text_social" style="justify-content:center;" data-aos="fade-up">
+      <div class="main-text_social" style="justify-content:center;">
           <p><a href="https://github.com/tudorcrisan1231" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385c.6.105.825-.255.825-.57c0-.285-.015-1.23-.015-2.235c-3.015.555-3.795-.735-4.035-1.41c-.135-.345-.72-1.41-1.23-1.695c-.42-.225-1.02-.78-.015-.795c.945-.015 1.62.87 1.845 1.23c1.08 1.815 2.805 1.305 3.495.99c.105-.78.42-1.305.765-1.605c-2.67-.3-5.46-1.335-5.46-5.925c0-1.305.465-2.385 1.23-3.225c-.12-.3-.54-1.53.12-3.18c0 0 1.005-.315 3.3 1.23c.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23c.66 1.65.24 2.88.12 3.18c.765.84 1.23 1.905 1.23 3.225c0 4.605-2.805 5.625-5.475 5.925c.435.375.81 1.095.81 2.22c0 1.605-.015 2.895-.015 3.3c0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" fill="currentColor"/></g></svg></a></p>
           <p><a href="https://www.linkedin.com/in/tudor-crisan-3ba77a202/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 2.838A1.838 1.838 0 0 1 2.838 1H21.16A1.837 1.837 0 0 1 23 2.838V21.16A1.838 1.838 0 0 1 21.161 23H2.838A1.838 1.838 0 0 1 1 21.161V2.838zm8.708 6.55h2.979v1.496c.43-.86 1.53-1.634 3.183-1.634c3.169 0 3.92 1.713 3.92 4.856v5.822h-3.207v-5.106c0-1.79-.43-2.8-1.522-2.8c-1.515 0-2.145 1.089-2.145 2.8v5.106H9.708V9.388zm-5.5 10.403h3.208V9.25H4.208v10.54zM7.875 5.812a2.063 2.063 0 1 1-4.125 0a2.063 2.063 0 0 1 4.125 0z" fill="currentColor"/></g></svg></a></p>
           <p><a href="mailto:crisantudor79@yahoo.com" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path class="clr-i-solid clr-i-solid-path-1" d="M32.33 6a2 2 0 0 0-.41 0h-28a2 2 0 0 0-.53.08l14.45 14.39z" fill="currentColor"/><path class="clr-i-solid clr-i-solid-path-2" d="M33.81 7.39l-14.56 14.5a2 2 0 0 1-2.82 0L2 7.5a2 2 0 0 0-.07.5v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-.12-.61zM5.3 28H3.91v-1.43l7.27-7.21l1.41 1.41zm26.61 0h-1.4l-7.29-7.23l1.41-1.41l7.27 7.21z" fill="currentColor"/></svg></a></p>
@@ -200,6 +212,7 @@
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from 'axios';
 
 export default {
   name: "App",
@@ -331,6 +344,17 @@ export default {
       mini_projects2,
       show: false,
       isOpen: false,
+
+      formData: {
+        name: '',
+        email: '',
+        message: ''
+      },
+      responseMessage: {
+        status: null,
+        message: null
+      },
+      apiKey: process.env.VUE_APP_API_KEY,
     }
   },
 
@@ -376,7 +400,6 @@ export default {
         //document.querySelector('.container_mobile').style.display = "block";
 
         this.isOpen = true;
-        console.log('da');
       } else{
         document.querySelector('.mobile_open').style.display='block';
         document.querySelector('.mobile_close').style.display='none';
@@ -384,7 +407,6 @@ export default {
         //document.querySelector('.container_mobile').style.display='block';
 
         this.isOpen = false;
-        console.log('nu');
       }
     },
     mobileNavItemsClose() {
@@ -398,6 +420,31 @@ export default {
       this.isOpen = false;
     },
 
+
+    submitForm() {
+      const apiUrl = `https://portofolio-contacts.tcn-dev.software/api/submit-form?key=${this.apiKey}&name=${this.formData.name}&email=${this.formData.email}&message=${this.formData.message}`;
+
+      // Use axios to make a POST request with form data
+      axios.post(apiUrl)
+        .then(response => {
+          this.responseMessage.type = 'success';
+          this.responseMessage.message = response.data.message;
+
+          // Reset the form
+          this.formData.name = '';
+          this.formData.email = '';
+          this.formData.message = '';
+        })
+        .catch(error => {
+          this.responseMessage.type = 'error';
+          this.responseMessage.message = error;
+
+          // Reset the form
+          this.formData.name = '';
+          this.formData.email = '';
+          this.formData.message = '';
+        });
+    }
   },
 
 
